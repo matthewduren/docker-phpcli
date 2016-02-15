@@ -1,5 +1,4 @@
 #!/bin/bash
-<<<<<<< HEAD
 if [[ -z "$RUN_CMD_TAG" ]]; then
         RUN_CMD_LOG="$APP_VIRTUAL_HOST"
 fi
@@ -20,13 +19,3 @@ elif ! [[ -z "$RUN_CMD_LONG" ]]; then
 else
         /usr/bin/logger -d -n 172.17.42.1 -u /dev/null "No RUN_CMD or RUN_CMD_LONG found.  Exit..."
 fi
-=======
-touch $RUN_CMD_LOG >> /dev/null 2>&1
-if ! [[ -e "$RUN_CMD_LOG" ]]; then
-        RUN_CMD_LOG="/dev/null"
-fi
-
-echo "Running ${RUN_CMD} and logging to ${RUN_CMD_LOG}"
-
-${RUN_CMD} >> ${RUN_CMD_LOG}
->>>>>>> 181d5fd412acf830cd24a3ebea7b2ff37d4f4bea
