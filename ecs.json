@@ -1,0 +1,68 @@
+{
+  "family": "crons-sample_domain_com",
+  "containerDefinitions": [
+    {
+      "name": "crons-sample_domain_com",
+      "image": "matthewduren/docker-phpcli",
+      "cpu": 64,
+      "memory": 512,
+      "entryPoint": [],
+      "environment": [
+        {
+          "name": "VIRTUAL_HOST",
+          "value": "sample.domain.com"
+        },
+        {
+          "name": "RUN_CMD",
+          "value": "/path/to/cron.sh"
+        },
+        {
+          "name": "RUN_CMD_LOG",
+          "value": "/var/logs/cron.log"
+        }
+      ],
+      "command": [],
+      "portMappings": [],
+      "volumesFrom": [],
+      "links": [],
+      "mountPoints": [
+        {
+          "sourceVolume": "logs",
+          "containerPath": "/var/logs",
+          "readOnly": false
+        },
+        {
+          "sourceVolume": "app",
+          "containerPath": "/app",
+          "readOnly": false
+        },
+        {
+          "sourceVolume": "apps",
+          "containerPath": "/var/apps",
+          "readOnly": false
+        }
+      ],
+      "essential": true
+    }
+  ],
+  "volumes": [
+    {
+      "name": "logs",
+      "host": {
+        "sourcePath": "/var/docker/logs/"
+      }
+    },
+    {
+      "name": "app",
+      "host": {
+        "sourcePath": "/var/docker/apps/sample.domain.com/"
+      }
+    },
+    {
+      "name": "apps",
+      "host": {
+        "sourcePath": "/var/docker/apps/"
+      }
+    }
+  ]
+}
